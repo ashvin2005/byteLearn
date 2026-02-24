@@ -55,8 +55,10 @@ const StepOne: React.FC<StepOneProps> = ({
 
 
         const pdfjsLib = await import("pdfjs-dist");
-        const workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
-        pdfjsLib.GlobalWorkerOptions.workerSrc = workerSrc;
+        pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
+          "pdfjs-dist/build/pdf.worker.min.mjs",
+          import.meta.url
+        ).toString();
 
         const loadingTask = pdfjsLib.getDocument(url);
         const pdf = await loadingTask.promise;
