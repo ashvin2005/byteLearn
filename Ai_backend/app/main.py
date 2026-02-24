@@ -9,6 +9,7 @@ app = FastAPI(title="ByteLearn AI Backend")
 origins = [
     "http://localhost:5173",
     "http://localhost:3000",
+    "https://byte-learn-five.vercel.app"
 ]
 
 app.add_middleware(
